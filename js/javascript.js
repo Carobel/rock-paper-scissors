@@ -1,6 +1,9 @@
 let humanScore = 0;
 let computerScore = 0;
 
+// DOM selects
+choiceBox = document.querySelector('#choice-box');
+
 // Generate a string containing rock, paper or scissors at random
 function getComputerChoice() {
     const rand = Math.random();
@@ -13,27 +16,24 @@ function getComputerChoice() {
     }
 }
 
-// Create UI
-const btnRock = document.createElement('button');
-const btnPaper = document.createElement('button');
-const btnScissors = document.createElement('button');
+// Handle choice buttons 
+choiceBox.addEventListener('click', (event) => {
+    const target = event.target;
 
-btnRock.textContent = 'Rock';
-btnPaper.textContent = 'Paper';
-btnScissors.textContent = 'Scissors';
-
-choiceBox = document.querySelector('#choice-box');
-
-choiceBox.appendChild(btnRock);
-choiceBox.appendChild(btnPaper);
-choiceBox.appendChild(btnScissors);
-
-//document.body.appendChild(choiceBox);
-
-// Process and return human choice
-function getHumanChoice() {
-    return (prompt('CHOOSE: rock paper scissors?')).toLowerCase();
-}
+    let choice;
+    switch(target.id) {
+        case 'btn-rock':
+            choice = 'rock';
+            break;
+        case 'btn-paper':
+            choice = 'paper';
+            break;
+        case 'btn-scissors':
+            choice = 'scissors';
+            break;
+    }
+    playRound(choice, getComputerChoice());
+})
 
 // Plays one round of rock, paper scissors
 function playRound(humanChoice, computerChoice) {
@@ -65,21 +65,5 @@ function printWinMessage(humanScore, computerScore) {
     }
     console.log(msg);
 }
-
-// Plays a game of rock paper scissors consisting of 5 rounds.
-function playGame() {
-    console.log("START NEW GAME.")
-
-    // play indefinitely
-    while (true) {
-        //get
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
-    }
-}
-
-playGame()
 
 
