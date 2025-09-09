@@ -53,17 +53,14 @@ function printWinMessage(humanScore, computerScore) {
 function playGame() {
     console.log("START NEW GAME.")
 
-    // play five rounds
-    for (let i = 1; i <= 5; i++) {
+    // play indefinitely
+    while (true) {
         //get
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
         playRound(humanSelection, computerSelection);
     }
-    // decide winner
-    console.log("GAME IS DONE.")
-    printWinMessage(humanScore, computerScore);
 }
 
 playGame()
