@@ -13,6 +13,23 @@ function getComputerChoice() {
     }
 }
 
+// Create UI
+const btnRock = document.createElement('button');
+const btnPaper = document.createElement('button');
+const btnScissors = document.createElement('button');
+
+btnRock.textContent = 'Rock';
+btnPaper.textContent = 'Paper';
+btnScissors.textContent = 'Scissors';
+
+choiceBox = document.querySelector('#choice-box');
+
+choiceBox.appendChild(btnRock);
+choiceBox.appendChild(btnPaper);
+choiceBox.appendChild(btnScissors);
+
+//document.body.appendChild(choiceBox);
+
 // Process and return human choice
 function getHumanChoice() {
     return (prompt('CHOOSE: rock paper scissors?')).toLowerCase();
